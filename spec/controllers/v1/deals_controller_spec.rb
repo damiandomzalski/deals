@@ -14,13 +14,13 @@ RSpec.describe V1::DealsController do
                   deal_stage_percentage: 0,
                   id: nil,
                   name: "Lost",
-                  summed_value: deal_1.value + deal_3.value
+                  summed_value: [deal_1.value, deal_3.value].inject(:+)
               },
               {
                   deal_stage_percentage: 100,
                   id: nil,
                   name: "Won",
-                  summed_value: deal_2.value + deal_4.value
+                  summed_value: [deal_2.value, deal_4.value].inject(:+)
               }
           ]
       }.as_json

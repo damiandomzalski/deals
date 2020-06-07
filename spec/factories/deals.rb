@@ -7,6 +7,6 @@ FactoryBot.define do
     sequence(:deal_stage_id)
     deal_stage_percentage { rand(0..100) }
     deal_stage_name { Faker::Lorem.word }
-    value { Faker::Number.decimal(l_digits = 5, r_digits = 2) }
+    value { Faker::Number.decimal(5,2) }
   end
 end

@@ -14,7 +14,7 @@ class ImportDealsService
 
     private
       def fetch_deals
-        deals_to_process.concat pipelinedeals_response["entries"]
+        deals_to_process.concat pipelinedeals_response["entries"] if pipelinedeals_response["entries"].present?
         call_next_pages if more_than_one_page_returned?
       end
 
@@ -44,6 +44,7 @@ class ImportDealsService
       end
 
       def pages_count
+        return 0 unless pipelinedeals_response.dig(:pagination, :pages).present?
         @pages_count = pipelinedeals_response["pagination"]["pages"]
       end
 

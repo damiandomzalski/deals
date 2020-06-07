@@ -5,7 +5,12 @@ RSpec.describe ImportDealsService do
     let(:subject) { ImportDealsService.new.call }
 
     context "when PipelineDeals return an empty array" do
-      let(:response) { [] }
+      let(:response) { 
+        {
+          entries: [], 
+          pagination: {}
+        }
+      }
       let(:pipelinedeals_response) { double }
 
       before do
