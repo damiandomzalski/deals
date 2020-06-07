@@ -1,0 +1,2 @@
+pipelinedeals:
+  deals_api_url: https://api.pipelinedeals.com/api/v3/deals.json
