@@ -1,3 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :v1, default: { format: "json" } do
+    get "deals", to: "deals#index"
+  end
+
+  # Forward non-api && non-ajax requests to StaticController
+  get "*page", to: "static#index", constraints: -> (req) do
+    !req.xhr? && req.format.html?
+  end
+
+  root "static#index"
 end
